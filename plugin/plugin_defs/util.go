@@ -96,6 +96,15 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 	fmt.Println(patterns)
 	fmt.Println(globPatterns)
 
+	d, err := os.Getwd()
+	if err != nil {
+		fmt.Println("Error in os.Getwd: ", err.Error())
+		return execFilesPathWithPrefixList, err
+	}
+
+	fmt.Println("JJJJJJJJJJJJJJJJJJ")
+	fmt.Println(d)
+
 	for _, pattern := range patterns {
 		rootSearchDirFS := os.DirFS(rootDir)
 
