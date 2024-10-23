@@ -1,0 +1,19 @@
+<easyb time='Thu Oct 17 22:13:59 IST 2024' totalbehaviors='2' totalfailedbehaviors='0' totalpendingbehaviors='1' executionTime='569'>
+  <stories scenarios='2' failedscenarios='0' pendingscenarios='1' executionTime='569'>
+    <story name='counting things' scenarios='1' failedscenarios='0' pendingscenarios='0' executionTime='551'>
+      <scenario name='Adding two integers' result='success' executionTime='48'>
+        <given name='two integer values of 1 and 2' result='success' />
+        <when name='we calculate the sum of the two values' result='success' />
+        <then name='the sum should be 3' result='success' />
+      </scenario>
+    </story>
+    <story name='multiplying things' scenarios='1' failedscenarios='0' pendingscenarios='1' executionTime='18'>
+      <scenario name='Adding two integers' result='pending' executionTime='1'>
+        <given name='two integer values of 2 and 3' result='success' />
+        <when name='we calculate the product of the two values' result='success' />
+        <then name='the product should be 6' result='pending' />
+      </scenario>
+    </story>
+  </stories>
+  <specifications specifications='0' failedspecifications='0' pendingspecifications='0' executionTime='0' />
+</easyb>

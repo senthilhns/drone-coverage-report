@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+gameoflife-core,com.wakaleo.gameoflife.domain,Universe,0,147,0,12,0,40,0,18,0,12
+gameoflife-core,com.wakaleo.gameoflife.domain,GridReader,0,95,0,6,0,17,0,8,0,5
+gameoflife-core,com.wakaleo.gameoflife.domain,Grid,0,252,0,30,0,43,0,32,0,17
+gameoflife-core,com.wakaleo.gameoflife.domain,GridWriter,0,58,1,5,0,9,1,5,0,3
+gameoflife-core,com.wakaleo.gameoflife.domain,Cell,0,68,0,4,0,13,0,7,0,5

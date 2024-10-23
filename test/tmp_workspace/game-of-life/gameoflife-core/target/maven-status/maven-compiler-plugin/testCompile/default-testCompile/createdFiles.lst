@@ -1,0 +1,10 @@
+com/wakaleo/gameoflife/integration/WhenYouStoreGamesInADatabase.class
+com/wakaleo/gameoflife/test/categories/SlowTests.class
+com/wakaleo/gameoflife/test/categories/IntegrationTests.class
+com/wakaleo/gameoflife/domain/WhenYouReadAGridFromAString.class
+com/wakaleo/gameoflife/domain/WhenYouPrintAGrid.class
+com/wakaleo/gameoflife/domain/WhenYouCreateAGrid.class
+com/wakaleo/gameoflife/domain/WhenYouPlayTheGameOfLife.class
+com/wakaleo/gameoflife/domain/WhenYouCreateANewUniverse.class
+com/wakaleo/gameoflife/domain/WhenYouCreateACell.class
+com/wakaleo/gameoflife/test/categories/RegressionTests.class

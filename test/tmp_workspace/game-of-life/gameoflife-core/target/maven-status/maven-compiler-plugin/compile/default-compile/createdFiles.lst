@@ -1,0 +1,5 @@
+com/wakaleo/gameoflife/domain/GridReader.class
+com/wakaleo/gameoflife/domain/GridWriter.class
+com/wakaleo/gameoflife/domain/Grid.class
+com/wakaleo/gameoflife/domain/Cell.class
+com/wakaleo/gameoflife/domain/Universe.class

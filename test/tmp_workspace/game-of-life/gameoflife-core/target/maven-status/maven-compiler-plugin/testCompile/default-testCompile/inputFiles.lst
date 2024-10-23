@@ -1,0 +1,10 @@
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouReadAGridFromAString.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouCreateANewUniverse.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/test/categories/RegressionTests.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouPlayTheGameOfLife.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouPrintAGrid.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouCreateACell.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/integration/WhenYouStoreGamesInADatabase.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/test/categories/IntegrationTests.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/domain/WhenYouCreateAGrid.java
+/harness/game-of-life/gameoflife-core/src/test/java/com/wakaleo/gameoflife/test/categories/SlowTests.java

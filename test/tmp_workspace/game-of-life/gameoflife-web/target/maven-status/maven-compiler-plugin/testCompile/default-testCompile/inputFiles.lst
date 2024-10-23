@@ -1,0 +1,3 @@
+/harness/game-of-life/gameoflife-web/src/test/java/com/wakaleo/gameoflife/webtests/controllers/WhenCreatingANewGame.java
+/harness/game-of-life/gameoflife-web/src/test/java/com/wakaleo/gameoflife/webtests/controllers/WhenSpawningANewGeneration.java
+/harness/game-of-life/gameoflife-web/src/test/java/com/wakaleo/gameoflife/webtests/controllers/WhenDisplayingTheHomePage.java
