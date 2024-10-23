@@ -101,8 +101,8 @@ func CheckFilesCopiedToWorkSpace(execPathsWithPrefixList map[string]interface{},
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/GridWriter.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/Grid.class",
 		"$WORKSPACE/classes/custom-checkstyle.xml",
-		"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
-		"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
+		//"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
+		//"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
 	}
 
 	fmt.Println("IIIIIIIIIIIIIIIIi")
