@@ -2,7 +2,7 @@
 release/
 
 .idea/
-main
+/main
 drone-coverage-report
 build/
 test/tmp_workspace/classes/
