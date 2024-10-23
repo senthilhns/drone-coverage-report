@@ -129,6 +129,13 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 func FilterFileOrDirUsingGlobPatterns(rootSearchDir string, dirsGlobList []string,
 	includeGlobPatternCsvStr, excludeGlobPatternCsvStr string, autoFillIncludePattern string) ([]FilesInfoStore, error) {
 
+	fmt.Println("TTTTTTTTTTTTTTTTTTTTTTTTTTTT")
+	fmt.Println(rootSearchDir)
+	fmt.Println(dirsGlobList)
+	fmt.Println(includeGlobPatternCsvStr)
+	fmt.Println(excludeGlobPatternCsvStr)
+	fmt.Println(autoFillIncludePattern)
+
 	var filesStoreList []FilesInfoStore
 
 	if len(includeGlobPatternCsvStr) == 0 {
@@ -147,6 +154,12 @@ func FilterFileOrDirUsingGlobPatterns(rootSearchDir string, dirsGlobList []strin
 		relPattern := strings.TrimPrefix(dirPattern, rootSearchDir+"/")
 
 		matchedDirs, err := doublestar.Glob(rootSearchDirFS, relPattern)
+
+		fmt.Println("CCCCCCCCCCCCCCCCCCCC")
+		fmt.Println("rootSearchDirFS: ", rootSearchDirFS)
+		fmt.Println("relPattern: ", relPattern)
+		fmt.Println("matchedDirs: ", matchedDirs)
+
 		if err != nil {
 			return filesStoreList, err
 		}

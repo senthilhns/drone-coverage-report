@@ -435,7 +435,7 @@ func (p *JacocoPlugin) IsSourceArgOk(args pd.Args) error {
 
 func (p *JacocoPlugin) IsClassArgOk(args pd.Args) error {
 
-	pd.LogPrintln(p, "JacocoPlugin BuildAndValidateArgs")
+	pd.LogPrintln(p, "JacocoPlugin IsClassArgOk")
 
 	if args.ClassPatterns == "" {
 		return pd.GetNewError("Error in IsClassArgOk: ClassPatterns is empty")
