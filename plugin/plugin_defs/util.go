@@ -18,6 +18,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"strings"
 )
 
@@ -236,36 +237,100 @@ func (i *IncludeExcludesMerged) CopySourceTo(toDstPathPrefix, buildRootPath stri
 		relPath := prefixWithPath.RelativePath
 		srcPath := filepath.Join(prefix, relPath)
 
-		fmt.Println("LLLLLLLLLLLLLLLLLLLLl")
-		fmt.Println(prefix)
-		fmt.Println(relPath)
-		fmt.Println(srcPath)
+		//fmt.Println("LLLLLLLLLLLLLLLLLLLLl")
+		//fmt.Println(prefix)
+		//fmt.Println(relPath)
+		//fmt.Println(srcPath)
 
-		pos := strings.Index(srcPath, buildRootPath)
-		if pos == -1 {
-			LogPrintln(nil, "Target not found in the path")
+		fmt.Println("MMMMMMMMMMMMMMMM")
+		dstFile := filepath.Join(toDstPathPrefix, relPath)
+		fmt.Println("Copying: ", srcPath, " to ", dstFile)
+
+		err := CopyFile(srcPath, dstFile)
+		if err != nil {
+			LogPrintln(nil, "Error in copying file: ", err.Error())
 			continue
 		}
 
-		if pos == 0 {
-			skipLen := len(buildRootPath)
-			tmpFilePath := srcPath[skipLen:]
-			fmt.Println(";;;;;;;;;;;;;;;")
-			fmt.Println(tmpFilePath)
-			fmt.Println(srcPath)
+		//pos := strings.Index(srcPath, buildRootPath)
+		//if pos == -1 {
+		//	LogPrintln(nil, "Target not found in the path")
+		//	continue
+		//}
 
-			dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
-
-			fmt.Println("%%%%%%%%%%%%%5 Copying: ", srcPath, " to ", dstFile)
-			err := CopyFile(srcPath, dstFile)
-			if err != nil {
-				LogPrintln(nil, "Error in copying file: ", err.Error())
-				continue
-			}
-		}
+		//if pos == 0 {
+		//	skipLen := len(buildRootPath)
+		//	tmpFilePath := srcPath[skipLen:]
+		//	fmt.Println(";;;;;;;;;;;;;;;")
+		//	fmt.Println(tmpFilePath)
+		//	fmt.Println(srcPath)
+		//
+		//	dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
+		//
+		//	getSrcDir(srcPath)
+		//
+		//	fmt.Println("%%%%%%%%%%%%%5 Copying: ", srcPath, " to ", dstFile)
+		//	err := CopyFile(srcPath, dstFile)
+		//	if err != nil {
+		//		LogPrintln(nil, "Error in copying file: ", err.Error())
+		//		continue
+		//	}
+		//}
 	}
 
 	return nil
+}
+
+func getSrcDir(absolutepath string) string {
+	pattern := `(src/(main|test)/.*)`
+
+	re := regexp.MustCompile(pattern)
+
+	match := re.FindStringSubmatch(absolutepath)
+	if len(match) > 1 {
+		return match[1]
+	}
+
+	return ""
+}
+
+func (i *IncludeExcludesMerged) GetAllUniqueDirsForSource1(toDstPathPrefix, buildRootPath string) []string {
+
+	sourceFilesDirMap := map[string]bool{}
+
+	for _, prefixWithPath := range i.CompletePathsWithPrefixList {
+		prefix := prefixWithPath.CompletePathPrefix
+		relPath := prefixWithPath.RelativePath
+
+		fmt.Println("DDDDDDDDDDDDDDDDDDDd")
+		fmt.Println(prefix)
+		fmt.Println(relPath)
+
+		srcPath := filepath.Join(prefix, relPath)
+
+		fmt.Println("SSSSSSSSSSSSSS")
+		fmt.Println(srcPath)
+
+		sourcePathDir := getSrcDir(filepath.Dir(srcPath))
+
+		fmt.Println(sourcePathDir)
+		fmt.Println(filepath.Join(toDstPathPrefix, sourcePathDir))
+
+		dstDir := filepath.Join(toDstPathPrefix, sourcePathDir)
+
+		sourceFilesDirMap[dstDir] = true
+
+	}
+
+	var uniqueDirs []string
+	for dir := range sourceFilesDirMap {
+		uniqueDirs = append(uniqueDirs, dir)
+	}
+
+	fmt.Println("$$$$$$$$$$$$")
+	fmt.Println(uniqueDirs)
+
+	return uniqueDirs
 }
 
 func (i *IncludeExcludesMerged) GetAllUniqueDirsForSource(toDstPathPrefix, buildRootPath string) []string {
@@ -276,21 +341,25 @@ func (i *IncludeExcludesMerged) GetAllUniqueDirsForSource(toDstPathPrefix, build
 		prefix := prefixWithPath.CompletePathPrefix
 		relPath := prefixWithPath.RelativePath
 
-		srcPath := filepath.Join(prefix, relPath)
-		pos := strings.Index(srcPath, buildRootPath)
-		if pos == -1 {
-			LogPrintln(nil, "Target not found in the path")
-			continue
-		}
-
-		if pos == 0 {
-			skipLen := len(buildRootPath)
-			tmpFilePath := srcPath[skipLen:]
-			dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
-
-			dirPath := filepath.Dir(dstFile)
-			sourceFilesDirMap[dirPath] = true
-		}
+		_ = prefix
+		newDir := filepath.Dir(filepath.Join(toDstPathPrefix, relPath))
+		sourceFilesDirMap[newDir] = true
+		//
+		//srcPath := filepath.Join(prefix, relPath)
+		//pos := strings.Index(srcPath, buildRootPath)
+		//if pos == -1 {
+		//	LogPrintln(nil, "Target not found in the path")
+		//	continue
+		//}
+		//
+		//if pos == 0 {
+		//	skipLen := len(buildRootPath)
+		//	tmpFilePath := srcPath[skipLen:]
+		//	dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
+		//
+		//	dirPath := filepath.Dir(dstFile)
+		//	sourceFilesDirMap[dirPath] = true
+		//}
 
 	}
 

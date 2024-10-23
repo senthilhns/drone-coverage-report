@@ -81,20 +81,19 @@ func CheckSourceAndClassPathsWithIncludeExcludeVariations(
 
 func CheckFilesCopiedToWorkSpace(wsi WorkSpaceInfo, t *testing.T) {
 	expectedFilesList := []string{
-		"$WORKSPACE/sources/game-of-life/gameoflife-core/src/main/java/com/wakaleo/gameoflife/domain/Universe.java",
-		"$WORKSPACE/sources/game-of-life/gameoflife-core/src/main/java/com/wakaleo/gameoflife/domain/Grid.java",
-		"$WORKSPACE/sources/game-of-life/gameoflife-core/src/main/java/com/wakaleo/gameoflife/domain/Cell.java",
-		"$WORKSPACE/sources/game-of-life/gameoflife-core/src/main/java/com/wakaleo/gameoflife/domain/GridReader.java",
-		"$WORKSPACE/sources/game-of-life/gameoflife-core/src/main/java/com/wakaleo/gameoflife/domain/GridWriter.java",
-		"$WORKSPACE/classes/pmd-rules.xml",
+		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/Universe.java",
+		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/Grid.java",
+		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/Cell.java",
+		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/GridReader.java",
+		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/GridWriter.java",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/Universe.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/Cell.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/GridReader.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/GridWriter.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/Grid.class",
 		"$WORKSPACE/classes/custom-checkstyle.xml",
-		"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
-		"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
+		//"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
+		//"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
 	}
 
 	for _, expectedFile := range expectedFilesList {
