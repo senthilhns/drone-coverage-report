@@ -281,6 +281,9 @@ func (p *JacocoPlugin) CopyJacocoExecFilesToWorkspace() error {
 		return err
 	}
 
+	fmt.Println("66666666666666666666666666666666666")
+	fmt.Println(uniqueDirs)
+
 	execFilesDir := p.GetExecFilesWorkSpaceDir()
 	pd.LogPrintln(p, "JacocoPlugin Copying Exec files to workspace: "+execFilesDir)
 	err = pd.CreateDir(execFilesDir)
@@ -290,6 +293,10 @@ func (p *JacocoPlugin) CopyJacocoExecFilesToWorkspace() error {
 	}
 
 	for _, dir := range uniqueDirs {
+		fmt.Println("7777777777777777777")
+		fmt.Println(execFilesDir)
+		fmt.Println(dir)
+
 		newDir := filepath.Join(execFilesDir, dir)
 		err = pd.CreateDir(newDir)
 		if err != nil {
@@ -303,7 +310,7 @@ func (p *JacocoPlugin) CopyJacocoExecFilesToWorkspace() error {
 		srcFilePath := filepath.Join(execFilePathsWithPrefix.CompletePathPrefix, execFilePathsWithPrefix.RelativePath)
 		dstFilePath := filepath.Join(execFilesDir, relPath)
 
-		fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.")
+		fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>. execFilesDir ", execFilesDir, " relPath ", relPath)
 		fmt.Println("Copying file: ", srcFilePath, " to ", dstFilePath)
 
 		err = pd.CopyFile(srcFilePath, dstFilePath)
