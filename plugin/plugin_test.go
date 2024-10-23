@@ -92,8 +92,8 @@ func CheckFilesCopiedToWorkSpace(wsi WorkSpaceInfo, t *testing.T) {
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/GridWriter.class",
 		"$WORKSPACE/classes/com/wakaleo/gameoflife/domain/Grid.class",
 		"$WORKSPACE/classes/custom-checkstyle.xml",
-		//"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
-		//"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
+		"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
+		"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
 	}
 
 	for _, expectedFile := range expectedFilesList {
