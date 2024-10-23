@@ -370,6 +370,8 @@ func (p *JacocoPlugin) CopyClassesToWorkspace() error {
 
 func (p *JacocoPlugin) CopySourcesToWorkspace() error {
 
+	fmt.Println("||||||||||||||||||||||||||||||||||||||||")
+
 	if p.InputArgs.SkipCopyOfSrcFiles {
 		pd.LogPrintln(p, "JacocoPlugin Skipping copying of source files")
 		return nil
@@ -384,7 +386,11 @@ func (p *JacocoPlugin) CopySourcesToWorkspace() error {
 	}
 
 	sourcesList := p.GetSourcesList()
+	fmt.Println("=================== GetSourcesList ===================")
+	fmt.Println(sourcesList)
+
 	for _, sourceInfo := range sourcesList {
+
 		err := sourceInfo.CopySourceTo(dstSourcesDir, p.BuildRootPath)
 		if err != nil {
 			continue
@@ -403,7 +409,9 @@ func (p *JacocoPlugin) GetSourcePatternsStrArray() []string {
 }
 
 func (p *JacocoPlugin) IsSourceArgOk(args pd.Args) error {
-	pd.LogPrintln(p, "JacocoPlugin BuildAndValidateArgs")
+
+	fmt.Println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
+	pd.LogPrintln(p, "JacocoPlugin IsSourceArgOk")
 
 	if p.InputArgs.SkipCopyOfSrcFiles {
 		pd.LogPrintln(p, "JacocoPlugin Skipping copying of source files")
@@ -417,6 +425,7 @@ func (p *JacocoPlugin) IsSourceArgOk(args pd.Args) error {
 	p.InputArgs.SourceInclusionPattern = args.SourceInclusionPattern
 	p.InputArgs.SourceExclusionPattern = args.SourceExclusionPattern
 
+	fmt.Println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 	sourcesInfoStoreList, err :=
 		pd.FilterFileOrDirUsingGlobPatterns(p.BuildRootPath, p.GetSourcePatternsStrArray(),
 			p.InputArgs.SourceInclusionPattern, p.InputArgs.SourceExclusionPattern, AllSourcesAutoFillGlob)
@@ -425,6 +434,8 @@ func (p *JacocoPlugin) IsSourceArgOk(args pd.Args) error {
 		pd.LogPrintln(p, "JacocoPlugin Error in IsSourceArgOk: "+err.Error())
 		return pd.GetNewError("Error in IsSourceArgOk: " + err.Error())
 	}
+
+	fmt.Println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 
 	p.SourcesInfoStoreList = sourcesInfoStoreList
 	p.FinalizedSourcesList = pd.MergeIncludeExcludeFileCompletePaths(p.SourcesInfoStoreList)
