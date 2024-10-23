@@ -25,8 +25,11 @@ func TestSourcePathWithIncludeAndExclude(t *testing.T) {
 
 	const TestFilesBasePath = "../test/tmp_workspace/game-of-life"
 
-	classPatterns := TestFilesBasePath + "/**/target/classes," + " " +
-		TestFilesBasePath + "/**/WEB-INF/classes"
+	//classPatterns := TestFilesBasePath + "/**/target/classes," + " " +
+	//	TestFilesBasePath + "/**/WEB-INF/classes"
+
+	classPatterns := "**/target/classes," + " " +
+		"**/WEB-INF/classes"
 
 	classInclusionPatterns := "**/*.class, **/*.xml"
 	classExclusionPatterns := "**/controllers/*.class"
