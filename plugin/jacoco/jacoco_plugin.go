@@ -302,6 +302,10 @@ func (p *JacocoPlugin) CopyJacocoExecFilesToWorkspace() error {
 		relPath := execFilePathsWithPrefix.RelativePath
 		srcFilePath := filepath.Join(execFilePathsWithPrefix.CompletePathPrefix, execFilePathsWithPrefix.RelativePath)
 		dstFilePath := filepath.Join(execFilesDir, relPath)
+
+		fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.")
+		fmt.Println("Copying file: ", srcFilePath, " to ", dstFilePath)
+
 		err = pd.CopyFile(srcFilePath, dstFilePath)
 		if err != nil {
 			pd.LogPrintln(p, "JacocoPlugin Error in CopyJacocoExecFilesToWorkspace: "+err.Error())
