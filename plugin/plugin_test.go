@@ -98,7 +98,7 @@ func CheckFilesCopiedToWorkSpace(wsi WorkSpaceInfo, t *testing.T) {
 	}
 
 	for _, expectedFile := range expectedFilesList {
-		completePath := strings.ReplaceAll(expectedFile, "$WORKSPACE", pd.GetTestWorkSpaceDir()+"/")
+		completePath := strings.ReplaceAll(expectedFile, "$WORKSPACE", pd.GetTestWorkSpaceDir())
 		_, err := os.Stat(completePath)
 		if err != nil {
 			t.Errorf("Error in CheckFilesCopiedToWorkSpace: %s", err.Error())

@@ -240,6 +240,7 @@ func (i *IncludeExcludesMerged) CopySourceTo(toDstPathPrefix, buildRootPath stri
 			tmpFilePath := srcPath[skipLen:]
 			dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
 
+			fmt.Println("%%%%%%%%%%%%%5 Copying: ", srcPath, " to ", dstFile)
 			err := CopyFile(srcPath, dstFile)
 			if err != nil {
 				LogPrintln(nil, "Error in copying file: ", err.Error())
