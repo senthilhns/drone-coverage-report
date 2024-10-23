@@ -333,12 +333,22 @@ func (p *JacocoPlugin) GetJacocoExecFilesUniqueDirs() ([]string, error) {
 }
 
 func (p *JacocoPlugin) CopyClassesToWorkspace() error {
-
+	fmt.Println("GGGGGGGGGGGGGGGGGGGGG")
 	classesList := p.GetClassesList()
 	if len(classesList) < 1 {
 		pd.LogPrintln(p, "JacocoPlugin Error in CopyClassesToWorkspace: No class files to copy")
 		return pd.GetNewError("Error in CopyClassesToWorkspace: No class files to copy")
 	}
+
+	d, err1 := os.Getwd()
+	if err1 != nil {
+		pd.LogPrintln(p, "JacocoPlugin Error in CopyClassesToWorkspace: "+err1.Error())
+	}
+
+	fmt.Println("HHHHHHHHHHHHHHHHHHHHH ")
+
+	fmt.Println(d)
+	fmt.Println(classesList)
 
 	dstClassesDir := p.GetClassesWorkSpaceDir()
 	err := pd.CreateDir(dstClassesDir)

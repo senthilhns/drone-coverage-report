@@ -49,31 +49,31 @@ func GetNewError(s string) error {
 }
 
 func LogPrintln(p Plugin, args ...interface{}) {
-
-	if !IsDevTestingMode() {
-		return
-	}
-
-	if p != nil {
-		if p.IsQuiet() {
-			return
-		}
-	}
+	//
+	//if !IsDevTestingMode() {
+	//	return
+	//}
+	//
+	//if p != nil {
+	//	if p.IsQuiet() {
+	//		return
+	//	}
+	//}
 
 	logrus.Println(append([]interface{}{"Plugin Info:"}, args...)...)
 }
 
 func LogPrintf(p Plugin, format string, v ...interface{}) {
 
-	if !IsDevTestingMode() {
-		return
-	}
-
-	if p != nil {
-		if p.IsQuiet() {
-			return
-		}
-	}
+	//if !IsDevTestingMode() {
+	//	return
+	//}
+	//
+	//if p != nil {
+	//	if p.IsQuiet() {
+	//		return
+	//	}
+	//}
 	logrus.Printf(format, v...)
 }
 
@@ -95,15 +95,6 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 	fmt.Println(rootDir)
 	fmt.Println(patterns)
 	fmt.Println(globPatterns)
-
-	d, err := os.Getwd()
-	if err != nil {
-		fmt.Println("Error in os.Getwd: ", err.Error())
-		return execFilesPathWithPrefixList, err
-	}
-
-	fmt.Println("JJJJJJJJJJJJJJJJJJ")
-	fmt.Println(d)
 
 	for _, pattern := range patterns {
 		rootSearchDirFS := os.DirFS(rootDir)
