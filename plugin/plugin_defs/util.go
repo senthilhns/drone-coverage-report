@@ -157,6 +157,7 @@ func FilterFileOrDirUsingGlobPatterns(rootSearchDir string, dirsGlobList []strin
 
 		fmt.Println("CCCCCCCCCCCCCCCCCCCC")
 		fmt.Println("rootSearchDirFS: ", rootSearchDirFS)
+		fmt.Println("dirPattern: ", dirPattern)
 		fmt.Println("relPattern: ", relPattern)
 		fmt.Println("matchedDirs: ", matchedDirs)
 
