@@ -91,13 +91,24 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 
 	patterns := strings.Split(globPatterns, ",")
 
+	fmt.Println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+	fmt.Println(rootDir)
+	fmt.Println(patterns)
+	fmt.Println(globPatterns)
+
 	for _, pattern := range patterns {
 		rootSearchDirFS := os.DirFS(rootDir)
 
 		relPattern := strings.TrimPrefix(pattern, rootDir+"/")
 
+		fmt.Println("VVVVVVVVVVVVVVVV")
+		fmt.Println("pattern: ", pattern)
+		fmt.Println("relPattern: ", relPattern)
+		fmt.Println("rootSearchDirFS: ", rootSearchDirFS)
+
 		matchedDirs, err := doublestar.Glob(rootSearchDirFS, relPattern)
 		if err != nil {
+			fmt.Println("GetAllJacocoExecFilesFromGlobPattern Error in doublestar.Glob: ", err.Error())
 			return execFilesPathWithPrefixList, err
 		}
 
@@ -109,6 +120,8 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 			execFilesPathWithPrefixList = append(execFilesPathWithPrefixList, execFilesPathWithPrefix)
 		}
 	}
+
+	fmt.Println(execFilesPathWithPrefixList)
 
 	return execFilesPathWithPrefixList, nil
 }
