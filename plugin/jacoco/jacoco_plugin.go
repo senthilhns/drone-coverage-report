@@ -153,8 +153,9 @@ func (p *JacocoPlugin) InspectProcessArgs(argNamesList []string) (map[string]int
 			nm["execFiles"] = p.GetExecFilesWorkSpaceDir()
 			nm["workspace"] = p.GetWorkspaceDir()
 			m[argName] = nm
+		case ExecFilePathsWithPrefixListStr:
+			m[argName] = p.ExecFilePathsWithPrefixList
 		}
-
 	}
 	return m, nil
 }
@@ -747,15 +748,16 @@ func GetNewJacocoPlugin() JacocoPlugin {
 }
 
 const (
-	JacocoReportsDirName         = "jacoco_reports_dir"
-	ClassFilesListParamKey       = "ClassFilesList"
-	ClassesInfoStoreListParamKey = "ClassesInfoStoreList"
-	FinalizedSourcesListParamKey = "FinalizedSourcesList"
-	WorkSpaceCompletePathKeyStr  = "WorkSpaceCompletePathKeyStr"
-	AllClassesAutoFillGlob       = "**/*.class"
-	AllSourcesAutoFillGlob       = "**/*.java"
-	DefaultJacocoJarPath         = "/opt/harness/plugins-deps/jacoco/0.8.12/jacoco.jar"
-	TestJacocoJarPath            = "../test/tmp_workspace/jacoco.jar"
+	JacocoReportsDirName           = "jacoco_reports_dir"
+	ClassFilesListParamKey         = "ClassFilesList"
+	ClassesInfoStoreListParamKey   = "ClassesInfoStoreList"
+	FinalizedSourcesListParamKey   = "FinalizedSourcesList"
+	WorkSpaceCompletePathKeyStr    = "WorkSpaceCompletePathKeyStr"
+	AllClassesAutoFillGlob         = "**/*.class"
+	AllSourcesAutoFillGlob         = "**/*.java"
+	DefaultJacocoJarPath           = "/opt/harness/plugins-deps/jacoco/0.8.12/jacoco.jar"
+	TestJacocoJarPath              = "../test/tmp_workspace/jacoco.jar"
+	ExecFilePathsWithPrefixListStr = "ExecFilePathsWithPrefixList"
 )
 
 //

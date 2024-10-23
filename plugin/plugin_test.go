@@ -2,9 +2,11 @@ package plugin
 
 import (
 	"context"
+	"fmt"
 	jc "github.com/harness-community/drone-coverage-report/plugin/jacoco"
 	pd "github.com/harness-community/drone-coverage-report/plugin/plugin_defs"
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -72,14 +74,21 @@ func CheckSourceAndClassPathsWithIncludeExcludeVariations(
 		t.Errorf("Error in TestClassPathWithIncludeExclude: %s", err.Error())
 	}
 
-	wsi, err := pd.ToStructFromJsonString[WorkSpaceInfo](js)
+	_, err = pd.ToStructFromJsonString[WorkSpaceInfo](js)
 	if err != nil {
 		t.Errorf("Error in TestClassPathWithIncludeExclude: %s", err.Error())
 	}
-	CheckFilesCopiedToWorkSpace(wsi, t)
+
+	execPathsWithPrefixList, err := plugin.InspectProcessArgs([]string{jc.ExecFilePathsWithPrefixListStr})
+	if err != nil {
+		t.Errorf("Error in TestClassPathWithIncludeExclude: %s", err.Error())
+	}
+
+	CheckFilesCopiedToWorkSpace(execPathsWithPrefixList, t)
 }
 
-func CheckFilesCopiedToWorkSpace(wsi WorkSpaceInfo, t *testing.T) {
+func CheckFilesCopiedToWorkSpace(execPathsWithPrefixList map[string]interface{}, t *testing.T) {
+
 	expectedFilesList := []string{
 		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/Universe.java",
 		"$WORKSPACE/sources/com/wakaleo/gameoflife/domain/Grid.java",
@@ -94,6 +103,25 @@ func CheckFilesCopiedToWorkSpace(wsi WorkSpaceInfo, t *testing.T) {
 		"$WORKSPACE/classes/custom-checkstyle.xml",
 		"$WORKSPACE/execFiles/game-of-life/gameoflife-core/target/jacoco.exec",
 		"$WORKSPACE/execFiles/game-of-life/gameoflife-web/target/jacoco.exec",
+	}
+
+	fmt.Println("IIIIIIIIIIIIIIIIi")
+	fmt.Println(execPathsWithPrefixList)
+
+	tmpVal, ok := execPathsWithPrefixList["ExecFilePathsWithPrefixList"]
+	if !ok {
+		t.Errorf("Error in CheckFilesCopiedToWorkSpace: %s", "ExecFilePathsWithPrefixList not found")
+	}
+
+	lst := tmpVal.([]pd.PathWithPrefix)
+	for _, p := range lst {
+		fmt.Println("UUUUUUUUUUUUUUUUUU")
+		fmt.Println(p)
+
+		execFilePath := filepath.Join(pd.GetTestWorkSpaceDir(), "execFiles", p.RelativePath)
+		fmt.Println("BBBBBBBBBBBBBBBBBBBBBBBBB")
+		fmt.Println(execFilePath)
+		expectedFilesList = append(expectedFilesList, execFilePath)
 	}
 
 	for _, expectedFile := range expectedFilesList {
