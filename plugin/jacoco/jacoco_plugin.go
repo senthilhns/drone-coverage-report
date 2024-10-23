@@ -330,6 +330,8 @@ func (p *JacocoPlugin) GetJacocoExecFilesUniqueDirs() ([]string, error) {
 	uniqueDirMap := map[string]bool{}
 
 	for _, execFilePathsWithPrefix := range p.ExecFilePathsWithPrefixList {
+		fmt.Println("2222222222222222")
+		fmt.Println(execFilePathsWithPrefix.RelativePath)
 		dir := filepath.Dir(execFilePathsWithPrefix.RelativePath)
 		uniqueDirMap[dir] = true
 	}

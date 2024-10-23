@@ -114,6 +114,8 @@ func GetAllJacocoExecFilesFromGlobPattern(rootDir, globPatterns string) ([]PathW
 		}
 
 		for _, match := range matchedDirs {
+			fmt.Println("1111111111111111111111111111111111111")
+			fmt.Println(match)
 			execFilesPathWithPrefix := PathWithPrefix{
 				CompletePathPrefix: rootDir,
 				RelativePath:       match,
