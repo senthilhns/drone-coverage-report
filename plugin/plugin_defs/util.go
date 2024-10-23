@@ -227,11 +227,19 @@ func (i *IncludeExcludesMerged) CopySourceTo(toDstPathPrefix, buildRootPath stri
 		}
 	}
 
+	fmt.Println("XXXXXXXXXXXXXXXXXXX")
+	fmt.Println(uniqueDirs)
+
 	for _, prefixWithPath := range i.CompletePathsWithPrefixList {
 
 		prefix := prefixWithPath.CompletePathPrefix
 		relPath := prefixWithPath.RelativePath
 		srcPath := filepath.Join(prefix, relPath)
+
+		fmt.Println("LLLLLLLLLLLLLLLLLLLLl")
+		fmt.Println(prefix)
+		fmt.Println(relPath)
+		fmt.Println(srcPath)
 
 		pos := strings.Index(srcPath, buildRootPath)
 		if pos == -1 {
@@ -242,6 +250,10 @@ func (i *IncludeExcludesMerged) CopySourceTo(toDstPathPrefix, buildRootPath stri
 		if pos == 0 {
 			skipLen := len(buildRootPath)
 			tmpFilePath := srcPath[skipLen:]
+			fmt.Println(";;;;;;;;;;;;;;;")
+			fmt.Println(tmpFilePath)
+			fmt.Println(srcPath)
+
 			dstFile := filepath.Join(toDstPathPrefix, tmpFilePath)
 
 			fmt.Println("%%%%%%%%%%%%%5 Copying: ", srcPath, " to ", dstFile)
