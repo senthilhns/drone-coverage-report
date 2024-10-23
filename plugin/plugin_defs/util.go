@@ -203,7 +203,7 @@ func (i *IncludeExcludesMerged) CopyTo(toDstPathPrefix, buildRootPath string) er
 
 		srcPath := filepath.Join(prefix, relPath)
 		dstPath := filepath.Join(toDstPathPrefix, relPath)
-
+		fmt.Println("Copying: ", srcPath, " to ", dstPath)
 		err := CopyFile(srcPath, dstPath)
 		if err != nil {
 			LogPrintln(nil, "** Error **:  in copying file: ", err.Error())
@@ -615,8 +615,18 @@ func StructToJSONWithEnvKeys(v interface{}) (string, error) {
 	return string(jsonData), nil
 }
 
-func GetTestWorkSpaceDir() string {
+func GetTestWorkSpaceDir0() string {
 	return TestWorkSpaceDir
+}
+
+func GetTestWorkSpaceDir() string {
+
+	jacocoWorkSpaceDir := os.Getenv(DefaultWorkSpaceDirEnvVarKey)
+	if jacocoWorkSpaceDir == "" {
+		jacocoWorkSpaceDir = TestWorkSpaceDir
+	}
+
+	return jacocoWorkSpaceDir
 }
 
 func GetTestBuildRootDir() string {
