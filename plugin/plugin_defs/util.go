@@ -215,6 +215,10 @@ func (i *IncludeExcludesMerged) CopyTo(toDstPathPrefix, buildRootPath string) er
 
 func (i *IncludeExcludesMerged) CopySourceTo(toDstPathPrefix, buildRootPath string) error {
 
+	fmt.Println("QQQQQQQQQQQQQQQQQQQQQQQQQq")
+	fmt.Println(toDstPathPrefix)
+	fmt.Println(buildRootPath)
+
 	uniqueDirs := i.GetAllUniqueDirsForSource(toDstPathPrefix, buildRootPath)
 	for _, dir := range uniqueDirs {
 		err := CreateDir(dir)
